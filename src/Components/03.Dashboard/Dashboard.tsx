@@ -4,6 +4,7 @@ import Link1Linechart from "../../Styled/Linechart";
 import AvatarDropdown from "./SocialProfilesDropDown";
 import { useState } from "react";
 import L1ChartBox from "../../Styled/L1ChartBox";
+import L1ReusableTabs from "../../Styled/L1TabPanel";
 
   export default function Dashboard(){
 
@@ -58,15 +59,29 @@ import L1ChartBox from "../../Styled/L1ChartBox";
           },
         ],
       };
+
+      const tabs = [
+        {
+          label: 'Overview',
+          content: <L1NumberBox items={performanceData}/>,
+        },
+        {
+          label: 'Posts',
+          content: <div>Content for Posts</div>,
+        },
+        {
+          label: 'Answers',
+          content: <div>Content for Answers</div>,
+        },
+      ];
       
 
     return(
         <div>
         <AvatarDropdown/>
         <Link1Linechart></Link1Linechart>
-        <h2>The numbers</h2>
-        <L1NumberBox items={performanceData}/>
         
+        <L1ReusableTabs tabs={tabs}></L1ReusableTabs>
         </div>
     )
 }
