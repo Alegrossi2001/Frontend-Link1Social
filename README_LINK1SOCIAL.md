@@ -1,6 +1,6 @@
 # What is this project?
 
-It's a cool fucking project designed for handling all sorts of social aspects. It holds various "packs", all done through microservices. The backend is built in ASP.NET and hosted on Azure.
+It's a cool fucking project designed for handling all sorts of social aspects. It holds various "packs", all done through microservices. The backend is built in ASP.NET and will be hosted on Azure.
 
 ## Project Structure
 
@@ -17,11 +17,10 @@ The benefits of this is obvious: Since we are still not very experienced with re
 
 # Social Packs
 
-## 1. Standard Pack (Free)
+## 1. Standard Pack
 
 This handles the default aspects of a social media management tool:
 - Basic Analytics (Dashboard)
 - Schedule Post (Schedule)
 - Connect Social Media Profiles and create groups(Connect)
 - Save post template (Create)
-

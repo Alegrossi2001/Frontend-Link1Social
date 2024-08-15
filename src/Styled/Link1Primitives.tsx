@@ -8,8 +8,8 @@ import { TextField } from '@mui/material';
   Primitives. Can be removed as soon as possible since we are transitioning to fully reusable components anywhere in the project
 */
 
-interface L1Button{
-    OnClickAction: () => any
+interface L1Button {
+    OnClickAction: () => unknown
 }
 
 interface L1ModalProps {

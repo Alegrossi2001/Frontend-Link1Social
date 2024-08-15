@@ -15,8 +15,8 @@ import { L1SchedulerModalForm } from './0201.AddContent/SchedulerModalForm';
 export default function SchedulerAppBar() {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [openModal, setOpenModal] = useState<boolean>(false);
-    const [scheduleDate, setScheduleDate] = useState<Date | null>(new Date());
-    const [postContent, setPostContent] = useState<string>('');
+    //const [scheduleDate, setScheduleDate] = useState<Date | null>(new Date());
+    //const [postContent, setPostContent] = useState<string>('');
 
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -85,9 +85,9 @@ export default function SchedulerAppBar() {
                     </Button>
                 </Box>
             </Toolbar>
-            
+
             {/* Modal for Creating a Post */}
-            <L1SchedulerModalForm openModal={openModal} handleCloseModal={handleCloseModal}/>
+            <L1SchedulerModalForm openModal={openModal} handleCloseModal={handleCloseModal} />
         </AppBar>
     );
 }

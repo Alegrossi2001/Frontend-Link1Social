@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./Login";
 import SignupPage from "./Signup";
+import React from 'react';
+interface LoginPageProps {
+    SetLogin: () => void,
+}
 
-interface LoginPageProps{
-    SetLogin : () => void,
-  }
-  
 
-const LoginRoutes : React.FC<LoginPageProps> = ({SetLogin}) => {
-    return(
+const LoginRoutes: React.FC<LoginPageProps> = ({ SetLogin }) => {
+    return (
         <Routes>
-            <Route path="/login" element={<LoginPage SetLogin={SetLogin}/>}></Route>
-            <Route path="/signup" element = {<SignupPage/>}> </Route>
+            <Route path="/login" element={<LoginPage SetLogin={SetLogin} />}></Route>
+            <Route path="/signup" element={<SignupPage />}> </Route>
         </Routes>
-        
+
     )
 }
 

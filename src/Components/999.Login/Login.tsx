@@ -1,25 +1,25 @@
 import React from 'react';
 import { Container, Box, Avatar, Typography, TextField, FormControlLabel, Checkbox, Button, Link, Grid } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { useState } from 'react';
+//import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface LoginPageProps{
-  SetLogin : () => void,
+interface LoginPageProps {
+  SetLogin: () => void,
 }
 
-const LoginPage : React.FC<LoginPageProps> = ({SetLogin}) => {
-  
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+const LoginPage: React.FC<LoginPageProps> = ({ SetLogin }) => {
 
-    const navigate = useNavigate();
+  //const [username, setUsername] = useState('');
+  //const [password, setPassword] = useState('');
 
-    const handleNavigate = (nav:string) => {
-      navigate(nav, { replace: true });
-    };
-    
-    return (
+  const navigate = useNavigate();
+
+  const handleNavigate = (nav: string) => {
+    navigate(nav, { replace: true });
+  };
+
+  return (
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
@@ -76,7 +76,7 @@ const LoginPage : React.FC<LoginPageProps> = ({SetLogin}) => {
               </Link>
             </Grid>
             <Grid item>
-            <Link href="#" variant="body2" onClick={() => handleNavigate('/signup')}>
+              <Link href="#" variant="body2" onClick={() => handleNavigate('/signup')}>
 
                 {"Don't have an account? Sign Up"}
               </Link>
