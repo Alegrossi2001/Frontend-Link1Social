@@ -1,5 +1,9 @@
 import { LineChart } from '@mui/x-charts/LineChart';
 
+
+/* DOCUMENTATION
+  TO DO: A component that automatically creates a linechart anywhere with minimal information gathered from the API
+*/
 export default function Link1Linechart(){
     return(
         <LineChart

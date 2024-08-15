@@ -4,6 +4,10 @@ import { Modal, Box } from '@mui/material';
 import { Typography } from '@mui/material';
 import { TextField } from '@mui/material';
 
+/* DOCUMENTATION
+  Primitives. Can be removed as soon as possible since we are transitioning to fully reusable components anywhere in the project
+*/
+
 interface L1Button{
     OnClickAction: () => any
 }

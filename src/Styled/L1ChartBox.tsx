@@ -43,7 +43,10 @@ interface ChartBoxProps {
   chartType: 'bar' | 'line' | 'pie';
 }
 
-//Currently does not work!
+/* DOCUMENTATION
+  A box to hold various charts, created through an object.
+  Currently does not work, needs to be redone
+*/
 const L1ChartBox: React.FC<ChartBoxProps> = ({ title, data, chartType }) => {
   const renderChart = () => {
     switch (chartType) {

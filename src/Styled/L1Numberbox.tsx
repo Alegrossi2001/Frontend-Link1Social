@@ -12,6 +12,10 @@ interface PerformanceBoxProps {
   items: PerformanceItem[];
 }
 
+/* DOCUMENTATION
+  A box that automatically fixes its own layout based on the number of items inside.
+  The items are counters but can also hold images (Look at PerformanceItem interface)
+*/
 const L1NumberBox: React.FC<PerformanceBoxProps> = ({ items }) => {
     return (
         <Box

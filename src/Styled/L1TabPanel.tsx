@@ -7,6 +7,12 @@ interface TabPanelProps {
   value: number;
 }
 
+
+/* DOCUMENTATION
+  Automatically creates a tab section with as many items as possible.
+  Currently used in the dashboard, but can be used anywhere.
+*/
+
 function L1TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
 
