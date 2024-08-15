@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TableSortLabel,
 } from '@mui/material';
-import { TableProps, ColumnConfig} from './TableProps';
+import { TableProps } from './TableProps';
 
 export const L1DynamicTable = <T,>({
     columns,

@@ -3,9 +3,9 @@ import SchedulerAppBar from "./SchedulerAppBar";
 
 export default function Scheduler(){
     
-    function test(){
-        console.log("this is a test");
-    }
+    // function test(){
+    //     console.log("this is a test");
+    // }
 
     return(
         <>
