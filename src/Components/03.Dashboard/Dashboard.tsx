@@ -7,6 +7,7 @@ import L1ChartBox from "../../Styled/L1ChartBox";
 import L1ReusableTabs from "../../Styled/L1TabPanel";
 import L1LineChart from "../../Styled/Charts/L1LineChart";
 import OverviewDashboard from "./OverviewDashboard";
+import PostDashboard from "./PostsDashboard";
 
 const Dashboard: React.FC = () =>{
 
@@ -25,7 +26,7 @@ const Dashboard: React.FC = () =>{
         },
         {
           label: 'Posts',
-          content: <div>Content for Posts</div>,
+          content: <PostDashboard></PostDashboard>
         },
         {
           label: 'Answers',

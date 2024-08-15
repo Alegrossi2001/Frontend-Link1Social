@@ -11,6 +11,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { RouterMain } from '../00.RouterMain/RouterMain';
+import { Grid, Paper } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -20,9 +21,31 @@ export default function Sidebar() {
       <CssBaseline />
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <Toolbar>
+        <Box sx={{ flexGrow: 1, p: 2 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <Box display="flex" justifyContent="flex-start">
           <Typography variant="h6" noWrap component="div">
-            Link1 Social
-          </Typography>
+              Link1 Social
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={4}>
+          <Box display="flex" justifyContent="center">
+          <Typography variant="h6" noWrap component="div">
+              <b>Alex Grossi's App</b>
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={4}>
+          <Box display="flex" justifyContent="flex-end">
+          <Typography variant="h6" noWrap component="div">
+              My Account
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
         </Toolbar>
       </AppBar>
       <Drawer
