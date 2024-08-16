@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 
 const useAuthRedirect = () => {
   const navigate = useNavigate();
-  const isAuthenticated = !!localStorage.getItem('LoggedIn'); // Replace with your auth logic
+  const isAuthenticated = !!localStorage.getItem('LoggedIn');
 
   useEffect(() => {
-      if (!isAuthenticated) {
-          navigate('/login');
-      }
-      
-  }, []); 
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+
+  }, []);
 };
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="App">
-      
+
       {LoggedIn ? (
         <Sidebar />
       ) : (

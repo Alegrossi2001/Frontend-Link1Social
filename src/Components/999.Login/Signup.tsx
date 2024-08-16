@@ -6,38 +6,14 @@ import { Link } from 'react-router-dom';
 
 const SignupPage: React.FC = () => {
   const [email, setEmail] = useState('');
+  const [validateEmail, setValidateEmail] = useState('');
   const [username, setUsername] = useState('');
+
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const signupEndpoint = 'https://your-backend-api.com/signup';
-
-    try {
-      const response = await fetch(signupEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          username,
-          password,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Signup failed');
-      }
-
-      const data = await response.json();
-      console.log('Signup successful', data);
-      // Handle successful sign-up (e.g., redirect to login page)
-    } catch (error) {
-      console.error('Error during signup', error);
-      // Handle sign-up error
-    }
   };
 
   return (
@@ -68,6 +44,18 @@ const SignupPage: React.FC = () => {
             autoFocus
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Validate Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={validateEmail}
+            onChange={(e) => setValidateEmail(e.target.value)}
           />
           <TextField
             margin="normal"
