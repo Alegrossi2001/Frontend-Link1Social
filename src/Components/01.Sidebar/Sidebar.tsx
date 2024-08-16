@@ -1,35 +1,46 @@
+import React, { useMemo, Suspense } from 'react';
 import { Box, CssBaseline, AppBar, Toolbar, Typography, Grid, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import UserProfileAvatar from './AvatarTopbar';
 import { RouterMain } from '../00.RouterMain/RouterMain';
-import React, { Suspense, useMemo } from 'react';
+
 const drawerWidth = 240;
 
-export default function Sidebar() {
-
+const Sidebar: React.FC = React.memo(() => {
+  // Memoized list of drawer items
   const drawerItems = useMemo(() => ['Dashboard', 'Connect', 'Schedule', 'Create'], []);
+
+  // Memoized styles to avoid inline style recalculations
+  const appBarStyles = useMemo(() => ({
+    zIndex: (theme: { zIndex: { drawer: number; }; }) => theme.zIndex.drawer + 1,
+    paddingX: 2,
+  }), []);
+
+  const drawerStyles = useMemo(() => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
+  }), []);
+
+  const mainBoxStyles = useMemo(() => ({
+    flexGrow: 1,
+    p: 3,
+  }), []);
 
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
 
-      {/* Adjusted AppBar */}
-      <AppBar
-        position="fixed"
-        sx={{
-          zIndex: (theme) => theme.zIndex.drawer + 1,
-          backgroundColor: '#1976d2', // Optional: Adjust the background color if needed
-          paddingX: 2 // Add horizontal padding
-        }}
-      >
+      {/* Optimized AppBar */}
+      <AppBar position="fixed" sx={appBarStyles}>
         <Toolbar>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={4}>
-              <Typography variant="h6" noWrap component="div">
+              <Typography variant="h6" noWrap>
                 Link1 Social
               </Typography>
             </Grid>
             <Grid item xs={4} sx={{ textAlign: 'center' }}>
-              <Typography variant="h6" noWrap component="div">
+              <Typography variant="h6" noWrap>
                 <b>Alex Grossi's App</b>
               </Typography>
             </Grid>
@@ -40,14 +51,10 @@ export default function Sidebar() {
         </Toolbar>
       </AppBar>
 
-      {/* Adjusted Drawer */}
+      {/* Optimized Drawer */}
       <Drawer
         variant="permanent"
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-        }}
+        sx={drawerStyles}
       >
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
@@ -63,13 +70,15 @@ export default function Sidebar() {
         </Box>
       </Drawer>
 
-      {/* Main Content */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      {/* Main Content Area with Suspense for lazy loading */}
+      <Box component="main" sx={mainBoxStyles}>
         <Toolbar />
         <Suspense fallback={<div>Loading...</div>}>
-          <RouterMain></RouterMain>
+          <RouterMain />
         </Suspense>
       </Box>
     </Box>
   );
-}
+});
+
+export default Sidebar;
