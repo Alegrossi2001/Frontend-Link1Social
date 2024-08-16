@@ -7,28 +7,16 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Box, Modal, TextField } from '@mui/material';
-import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { Box } from '@mui/material';
+
 import { L1SchedulerModalForm } from './0201.AddContent/SchedulerModalForm';
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 4,
-};
 
 export default function SchedulerAppBar() {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const [openModal, setOpenModal] = useState<boolean>(false);
-    const [scheduleDate, setScheduleDate] = useState<Date | null>(new Date());
-    const [postContent, setPostContent] = useState<string>('');
+    //const [scheduleDate, setScheduleDate] = useState<Date | null>(new Date());
+    //const [postContent, setPostContent] = useState<string>('');
 
     const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -45,23 +33,6 @@ export default function SchedulerAppBar() {
 
     const handleCloseModal = () => {
         setOpenModal(false);
-    };
-
-    const handleScheduleDateChange = (newDate: Date | null) => {
-        setScheduleDate(newDate);
-    };
-
-    const handlePostContentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPostContent(event.target.value);
-    };
-
-    const handleSubmit = () => {
-        // Handle post submission logic here
-        console.log('Scheduled Post:', {
-            postContent,
-            scheduleDate,
-        });
-        handleCloseModal(); // Close the modal after submission
     };
 
     const currentDate = new Date().toLocaleDateString();
@@ -114,9 +85,9 @@ export default function SchedulerAppBar() {
                     </Button>
                 </Box>
             </Toolbar>
-            
+
             {/* Modal for Creating a Post */}
-            <L1SchedulerModalForm openModal={openModal} handleCloseModal={handleCloseModal}/>
+            <L1SchedulerModalForm openModal={openModal} handleCloseModal={handleCloseModal} />
         </AppBar>
     );
 }
