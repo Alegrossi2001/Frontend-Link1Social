@@ -1,53 +1,46 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import { Box, CssBaseline, AppBar, Toolbar, Typography, Grid, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import UserProfileAvatar from './AvatarTopbar';
 import { RouterMain } from '../00.RouterMain/RouterMain';
-import { Grid, Paper } from '@mui/material';
-
+import React, { Suspense, useMemo } from 'react';
 const drawerWidth = 240;
 
 export default function Sidebar() {
+
+  const drawerItems = useMemo(() => ['Dashboard', 'Connect', 'Schedule', 'Create'], []);
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+
+      {/* Adjusted AppBar */}
+      <AppBar
+        position="fixed"
+        sx={{
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          backgroundColor: '#1976d2', // Optional: Adjust the background color if needed
+          paddingX: 2 // Add horizontal padding
+        }}
+      >
         <Toolbar>
-        <Box sx={{ flexGrow: 1, p: 2 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-start">
-          <Typography variant="h6" noWrap component="div">
-              Link1 Social
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="center">
-          <Typography variant="h6" noWrap component="div">
-              <b>Alex Grossi's App</b>
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={4}>
-          <Box display="flex" justifyContent="flex-end">
-          <Typography variant="h6" noWrap component="div">
-              My Account
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
+          <Grid container alignItems="center" spacing={2}>
+            <Grid item xs={4}>
+              <Typography variant="h6" noWrap component="div">
+                Link1 Social
+              </Typography>
+            </Grid>
+            <Grid item xs={4} sx={{ textAlign: 'center' }}>
+              <Typography variant="h6" noWrap component="div">
+                <b>Alex Grossi's App</b>
+              </Typography>
+            </Grid>
+            <Grid item xs={4} sx={{ textAlign: 'right' }}>
+              <UserProfileAvatar />
+            </Grid>
+          </Grid>
         </Toolbar>
       </AppBar>
+
+      {/* Adjusted Drawer */}
       <Drawer
         variant="permanent"
         sx={{
@@ -58,24 +51,24 @@ export default function Sidebar() {
       >
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
-        <List>
-          {['Dashboard', 'Connect', 'Schedule', 'TBD'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton href={`/${text}`}>
-                {//<ListItemIcon>
-                  //{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                //</ListItemIcon>
-                }
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+          <List>
+            {drawerItems.map((text) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton href={`/${text}`}>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
         </Box>
       </Drawer>
+
+      {/* Main Content */}
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        <RouterMain></RouterMain>
+        <Suspense fallback={<div>Loading...</div>}>
+          <RouterMain></RouterMain>
+        </Suspense>
       </Box>
     </Box>
   );
