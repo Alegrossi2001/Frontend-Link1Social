@@ -1,6 +1,7 @@
 
 import SchedulerAppBar from "./SchedulerAppBar";
 import SchedulerCalendar from "./0200.Planner/SchedulerCalendar";
+import PostCalendar from "./0200.Planner/PostCalendar";
 
 export default function Scheduler() {
 
@@ -14,7 +15,9 @@ export default function Scheduler() {
     return (
         <>
             <SchedulerAppBar></SchedulerAppBar>
+
             <SchedulerCalendar posts={posts}></SchedulerCalendar>
+            <PostCalendar></PostCalendar>
             <h1>Per l'API di schedulazione mi serve ricevere (Linkedin):</h1>
             <ul>
                 <li>Chiave API del cliente di link1 studios per approvazione</li>
