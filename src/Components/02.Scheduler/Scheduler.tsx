@@ -16,7 +16,9 @@ export default function Scheduler() {
         <>
             <SchedulerAppBar></SchedulerAppBar>
 
-            <SchedulerCalendar posts={posts}></SchedulerCalendar>
+            {
+                //<SchedulerCalendar posts={posts}></SchedulerCalendar>
+            }
             <PostCalendar></PostCalendar>
             <h1>Per l'API di schedulazione mi serve ricevere (Linkedin):</h1>
             <ul>

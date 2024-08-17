@@ -173,10 +173,7 @@ const PostCalendar = () => {
                         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                             <ButtonGroup size="large" variant="contained" aria-label="outlined primary button group">
                                 <Button onClick={() => setOpenDatepickerModal(true)} size="small" variant="contained">
-                                    Add event
-                                </Button>
-                                <Button onClick={() => setOpenTodoModal(true)} size="small" variant="contained">
-                                    Create todo
+                                    + NEW POST
                                 </Button>
                             </ButtonGroup>
                         </Box>
@@ -189,7 +186,6 @@ const PostCalendar = () => {
                             onAddEvent={onAddEvent}
                             todos={todos}
                         />
-
                         <AddDatePickerEventModal
                             open={openDatepickerModal}
                             handleClose={handleDatePickerClose}
@@ -204,6 +200,7 @@ const PostCalendar = () => {
                             onDeleteEvent={onDeleteEvent}
                             currentEvent={currentEvent as IEventInfo}
                         />
+
                         <Calendar
                             localizer={localizer}
                             events={events}
@@ -211,9 +208,10 @@ const PostCalendar = () => {
                             onSelectSlot={handleSelectSlot}
                             selectable
                             startAccessor="start"
-                            components={{ event: EventInfo }}
-                            endAccessor="end"
-                            defaultView="week"
+
+                            style={{
+                                height: 900,
+                            }}
                             eventPropGetter={(event) => {
                                 const hasTodo = todos.find((todo) => todo._id === event.todoId)
                                 return {
@@ -223,10 +221,8 @@ const PostCalendar = () => {
                                     },
                                 }
                             }}
-                            style={{
-                                height: 900,
-                            }}
                         />
+
 
                     </CardContent>
                 </Card>
@@ -240,7 +236,13 @@ export default PostCalendar;
 /*
 
 
-                        
+                            
+
+ 
+                        endAccessor="end"
+                        defaultView="week"
+
+                        components={{ event: EventInfo }}
                         <AddTodoModal
                             open={openTodoModal}
                             handleClose={() => setOpenTodoModal(false)}
