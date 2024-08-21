@@ -4,6 +4,7 @@ import Dashboard from "../03.Dashboard/Dashboard";
 import ConnectBoard from "../04.Connect/ConnectBoard";
 import CreateBoard from "../05.Create/CreateBoard";
 import Leaderboard from "../998.Leaderboard/Leaderboard";
+import UserProfile from "../997.UserProfile/UserProfile";
 export function RouterMain() {
     return (
         <Routes>
@@ -15,6 +16,7 @@ export function RouterMain() {
                 //TESTS - REMOVE
             }
             <Route path="Leaderboard-test" element={<Leaderboard />}></Route>
+            <Route path="User-profile" element={<UserProfile />} ></Route>
         </Routes>
     )
 }

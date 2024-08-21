@@ -8,7 +8,7 @@ const drawerWidth = 240;
 
 const Sidebar: React.FC = React.memo(() => {
 
-  const drawerItems = useMemo(() => ['Dashboard', 'Connect', 'Schedule', 'Create', "Leaderboard-test"], []);
+  const drawerItems = useMemo(() => ['Dashboard', 'Connect', 'Schedule', 'Create', "Leaderboard-test", "User-profile"], []);
 
   const appBarStyles = useMemo(() => ({
     zIndex: (theme: { zIndex: { drawer: number; }; }) => theme.zIndex.drawer + 1,

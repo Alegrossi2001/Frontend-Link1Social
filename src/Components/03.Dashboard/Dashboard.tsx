@@ -3,7 +3,6 @@ import L1NumberBox from "../../Styled/L1Numberbox";
 import React from "react";
 import AvatarDropdown from "./SocialProfilesDropDown";
 import { useState } from "react";
-import L1ChartBox from "../../Styled/L1ChartBox";
 import L1ReusableTabs from "../../Styled/L1TabPanel";
 import L1LineChart from "../../Styled/Charts/L1LineChart";
 import OverviewDashboard from "./OverviewDashboard";

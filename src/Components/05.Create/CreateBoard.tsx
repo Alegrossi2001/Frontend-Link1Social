@@ -10,8 +10,8 @@ export default function CreateBoard() {
 
     return (
         <>
-            <p>Hello?</p>
-            <Button onClick={randomtest}>FUCK YOU</Button>
+            <p>This is the hardest section to create. It needs to be a collaboration tool like Trello</p>
+            <Button onClick={randomtest}>TEST</Button>
         </>
     )
 }
