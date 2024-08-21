@@ -44,23 +44,6 @@ export default function SchedulerAppBar() {
         setOpenModal(false);
     };
 
-    // const handleScheduleDateChange = (newDate: Date | null) => {
-    //     setScheduleDate(newDate);
-    // };
-
-    // const handlePostContentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    //     setPostContent(event.target.value);
-    // };
-
-    // const handleSubmit = () => {
-    //     // Handle post submission logic here
-    //     console.log('Scheduled Post:', {
-    //         postContent,
-    //         scheduleDate,
-    //     });
-    //     handleCloseModal(); // Close the modal after submission
-    // };
-
     const currentDate = new Date().toLocaleDateString();
 
     return (
