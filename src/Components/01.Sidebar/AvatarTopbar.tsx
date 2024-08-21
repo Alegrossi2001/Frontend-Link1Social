@@ -1,10 +1,12 @@
 import React, { useState, MouseEvent } from 'react';
 import { Avatar, Menu, MenuItem, IconButton } from '@mui/material';
 import { useLogout } from '../../Hooks/Logout';
+import { useNavigate } from 'react-router-dom';
 
 const UserProfileAvatar: React.FC = () => {
+    //Hooks
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
+    const navigate = useNavigate();
     const HandleLogout = useLogout();
 
     const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -16,9 +18,13 @@ const UserProfileAvatar: React.FC = () => {
     };
 
     const handleProfile = () => {
-        // Handle the "My Profile" action here
-        console.log('My Profile clicked');
-        handleClose();
+        // Replace the current route with the new route, clearing history
+        navigate('/user-profile', { replace: true });
+    };
+
+    const handleLeaderboard = () => {
+        // Replace the current route with the new route, clearing history
+        navigate('/leaderboard', { replace: true });
     };
 
     return (
@@ -40,6 +46,7 @@ const UserProfileAvatar: React.FC = () => {
                 }}
             >
                 <MenuItem onClick={handleProfile}>My Profile</MenuItem>
+                <MenuItem onClick={handleLeaderboard}>Leaderboard</MenuItem>
                 <MenuItem onClick={HandleLogout}>Logout</MenuItem>
             </Menu>
         </>

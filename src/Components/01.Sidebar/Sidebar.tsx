@@ -3,13 +3,13 @@ import { Box, CssBaseline, AppBar, Toolbar, Typography, Grid, Drawer, List, List
 import UserProfileAvatar from './AvatarTopbar';
 import { RouterMain } from '../00.RouterMain/RouterMain';
 
+
 const drawerWidth = 240;
 
 const Sidebar: React.FC = React.memo(() => {
-  // Memoized list of drawer items
-  const drawerItems = useMemo(() => ['Dashboard', 'Connect', 'Schedule', 'Create'], []);
 
-  // Memoized styles to avoid inline style recalculations
+  const drawerItems = useMemo(() => ['Dashboard', 'Connect', 'Schedule', 'Create', "Leaderboard-test"], []);
+
   const appBarStyles = useMemo(() => ({
     zIndex: (theme: { zIndex: { drawer: number; }; }) => theme.zIndex.drawer + 1,
     paddingX: 2,
@@ -26,11 +26,11 @@ const Sidebar: React.FC = React.memo(() => {
     p: 3,
   }), []);
 
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
 
-      {/* Optimized AppBar */}
       <AppBar position="fixed" sx={appBarStyles}>
         <Toolbar>
           <Grid container alignItems="center" spacing={2}>
@@ -51,7 +51,6 @@ const Sidebar: React.FC = React.memo(() => {
         </Toolbar>
       </AppBar>
 
-      {/* Optimized Drawer */}
       <Drawer
         variant="permanent"
         sx={drawerStyles}
