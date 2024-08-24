@@ -1,7 +1,7 @@
 // src/components/Calendar.tsx
 import React, { useState } from 'react';
 import { Grid, Paper, Typography, Dialog, DialogContent, DialogTitle, Button } from '@mui/material';
-import { format, startOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, isSameDay, endOfWeek } from 'date-fns';
+import { format, startOfWeek, addDays, startOfMonth, endOfMonth, isSameMonth, isSameDay, endOfWeek, subMonths, addMonths } from 'date-fns';
 
 interface Post {
     id: number;
@@ -15,8 +15,9 @@ interface CalendarProps {
 }
 
 const Calendar: React.FC<CalendarProps> = ({ posts }) => {
-    const [currentMonth] = useState(new Date());
+    const [currentMonth, setCurrentMonth] = useState(new Date());
     const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+
     const startDate = startOfWeek(startOfMonth(currentMonth));
     const endDate = endOfWeek(endOfMonth(currentMonth));
 
@@ -28,16 +29,24 @@ const Calendar: React.FC<CalendarProps> = ({ posts }) => {
         setSelectedPost(null);
     };
 
+    const handlePrevMonth = () => {
+        setCurrentMonth(subMonths(currentMonth, 1));
+    };
+
+    const handleNextMonth = () => {
+        setCurrentMonth(addMonths(currentMonth, 1));
+    };
+
     const renderDays = () => {
         const days = [];
         const dateFormat = 'EEEE';
-        let startDate = startOfWeek(new Date());
+        let startDay = startOfWeek(new Date());
 
         for (let i = 0; i < 7; i++) {
             days.push(
                 <Grid item xs key={i}>
                     <Typography variant="h6" align="center">
-                        {format(addDays(startDate, i), dateFormat)}
+                        {format(addDays(startDay, i), dateFormat)}
                     </Typography>
                 </Grid>
             );
@@ -49,11 +58,9 @@ const Calendar: React.FC<CalendarProps> = ({ posts }) => {
         const rows = [];
         let days = [];
         let day = startDate;
-        let formattedDate = '';
 
         while (day <= endDate) {
             for (let i = 0; i < 7; i++) {
-                formattedDate = format(day, 'd');
                 const cloneDay = day;
                 days.push(
                     <Grid item xs key={day.toString()}>
@@ -65,18 +72,21 @@ const Calendar: React.FC<CalendarProps> = ({ posts }) => {
                                 padding: '10px',
                                 position: 'relative',
                             }}
-                            onClick={() => posts.some((post) => isSameDay(post.date, cloneDay)) && handleClickOpen(posts.find((post) => isSameDay(post.date, cloneDay))!)}
+                            onClick={() => {
+                                const post = posts.find(p => isSameDay(p.date, cloneDay));
+                                if (post) handleClickOpen(post);
+                            }}
                         >
                             <Typography
                                 variant="body2"
                                 align="right"
                                 style={{ position: 'absolute', top: 0, right: 0 }}
                             >
-                                {formattedDate}
+                                {format(day, 'd')}
                             </Typography>
                             {posts
-                                .filter((post) => isSameDay(post.date, cloneDay))
-                                .map((post) => (
+                                .filter(post => isSameDay(post.date, cloneDay))
+                                .map(post => (
                                     <div key={post.id} style={{ cursor: 'pointer' }}>
                                         {post.imageUrl && (
                                             <img
@@ -105,6 +115,12 @@ const Calendar: React.FC<CalendarProps> = ({ posts }) => {
 
     return (
         <div>
+            <Grid container justifyContent="space-between" alignItems="center" style={{ marginBottom: '20px' }}>
+                <Button onClick={handlePrevMonth}>Previous Month</Button>
+                <Typography variant="h5">{format(currentMonth, 'MMMM yyyy')}</Typography>
+                <Button onClick={handleNextMonth}>Next Month</Button>
+            </Grid>
+
             {renderDays()}
             {renderCells()}
 
